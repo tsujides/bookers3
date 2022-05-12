@@ -1,0 +1,42 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'users/info', user: @book.user %>
+      <h2 class="mt-3">New book</h2>
+      <%= render 'form', book: @new_book %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>Book detail</h2>
+  		<table class='table'>
+  		  <tr>
+          <td><%= link_to @book.user do %>
+            <%= image_tag @book.user.get_profile_image, size:"100x100" %><br>
+            <%= @book.user.name %>
+            <% end %>
+          </td>
+          <td><%= link_to @book.title, @book %></td>
+          <td><%= @book.body %></td>
+          <td id="favorite-btn-<%= @book.id %>">
+            <%= render "favorites/favorite-btn", book: @book %>
+          </td>
+          <td>コメント数:<%= @book.book_comments.count %></td>
+          <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" if @book.user == current_user %></td>
+          <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}" if @book.user == current_user %></td>
+        </tr>
+        <%= render "book_comments/book-comment", book: @book %>
+        <tr id="book-comment-form">
+          <td colspan="7">
+          <%= form_with model: [@book, @book_comment], local: false do |f| %>
+          <%= f.text_area :comment, rows: '5', class: 'w-100', placeholder: "コメント" %>
+          <%= f.submit "送信" %>
+          <% end %>
+          </td>
+        </tr>
+      </table>
+
+      <div>
+
+    </div>
+  </div>
+</div>

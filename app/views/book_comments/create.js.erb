@@ -1,0 +1,2 @@
+$("#book-comment-form").closest("table").find(".book-comment-item").remove();
+$("#book-comment-form").before("<%= j(render 'book-comment', book: @book) %>");

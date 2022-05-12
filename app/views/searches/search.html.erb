@@ -1,0 +1,9 @@
+<h1>
+  <%= "#{@model.pluralize.capitalize} search for \"#{@content}\"" %>
+</h1>
+
+<% if @model == :book.to_s %>
+<%= render 'book', books: @books %>
+<% elsif @model == :user.to_s %>
+<%= render 'user', users: @users %>
+<% end %>

@@ -1,0 +1,24 @@
+<% if relationships.present? %>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% relationships.each do |relationship| %>
+      <tr>
+        <td><%= image_tag relationship.follower.get_profile_image, size: '50x50' %></td>
+        <td><%= relationship.follower.name %></td>
+        <td>フォロー数: <%= relationship.follower.followers.count %></td>
+        <td>フォロワー数: <%= relationship.follower.followeds.count %></td>
+        <td><%= link_to 'Show', relationship.follower, class: "user_#{relationship.follower.id}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+ユーザーはいません。
+<% end %>
