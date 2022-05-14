@@ -25,19 +25,28 @@
 </table>
 
 <div class='row'>
-<% if @user == current_user %>
-  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
-    <i class="fas fa-user-cog"></i>
-  <% end %>
-<% else %>
-  <% if current_user.follow_to?(user) %>
-    <%= link_to user_relationships_path(user), class: "btn btn-info btn-block follow_user_#{user.id}", method: :delete do %>
-    フォローを外す
+  <div class="col-6">
+  <% if @user.nil? || @user == current_user %>
+    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
+      <i class="fas fa-user-cog"></i>
     <% end %>
   <% else %>
-    <%= link_to user_relationships_path(user), class: "btn btn-success btn-block follow_user_#{user.id}", method: :post do %>
-    フォローする
+    <% if current_user.follow_to?(user) %>
+      <%= link_to user_relationships_path(user), class: "btn btn-info btn-block follow_user_#{user.id}", method: :delete do %>
+      フォローを外す
+      <% end %>
+    <% else %>
+      <%= link_to user_relationships_path(user), class: "btn btn-success btn-block follow_user_#{user.id}", method: :post do %>
+      フォローする
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+  </div>
+  <div class="col-6 chat-link">
+    <% if user != current_user && current_user.follow_each_other?(user) %>
+      <%= link_to chat_show_path(user) do %>
+      chatを始める
+      <% end %>
+    <% end %>
+  </div>
 </div>

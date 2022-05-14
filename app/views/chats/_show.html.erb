@@ -1,0 +1,18 @@
+<table id="chat-message-list" class="table">
+  <tbody>
+<% chats.each do |chat| %>
+      <tr>
+        <td>
+          <div class="chat-message-holder <%= chat.from == current_user ? :right : :left %>">
+            <div class="chat-message">
+              <%= chat.from.name %>:
+              <%= chat.message %>
+            </div>
+          </div>
+        </td>
+      </tr>
+<% end %>
+  </tbody>
+</table>
+
+

@@ -1,3 +1,11 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+#top-container, #about-container {
+  h1 {
+    margin-bottom: 30px;
+  }
+  p {
+    padding: 5px;
+  }
+}

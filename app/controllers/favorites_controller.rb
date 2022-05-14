@@ -6,6 +6,13 @@ class FavoritesController < ApplicationController
     favorite.save
 
     # redirect_to request.referer
+    @books = Favorite.ordered_book_list
+
+    # 呼び出し元
+    referer = Rails.application.routes.recognize_path(request.referer)
+    if referer[:action] == 'show'
+      render 'create-partial'
+    end
   end
 
   def destroy
@@ -15,5 +22,13 @@ class FavoritesController < ApplicationController
     favorite.destroy
 
     # redirect_to request.referer
+    @books = Favorite.ordered_book_list
+
+    # 呼び出し元
+    referer = Rails.application.routes.recognize_path(request.referer)
+    if referer[:action] == 'show'
+      render 'create-partial'
+    end
   end
+
 end

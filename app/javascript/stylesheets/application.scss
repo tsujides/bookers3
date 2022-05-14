@@ -1,2 +1,21 @@
-@import "~bootstrap/scss/bootstrap"; 
+@import "~bootstrap/scss/bootstrap";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+#header-search-form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 30px;
+}
+.main-left {
+  .create-book-button {
+    width: 100%;
+  }
+}
+#login-container, #forgot-password-container, #signup-container, #update-user-container {
+  width: 500px;
+  input[type="text"], input[type="password"], input[type="submit"], input[type="email"] {
+    width: 100%;
+    margin: 5px;
+  }
+}

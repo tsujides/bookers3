@@ -5,11 +5,16 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
     @new_book = Book.new
+
+    # 閲覧数をインクリメント
+    @book.increment(:view).save
   end
 
   def index
-    @books = Book.all
     @book = Book.new
+    # 過去一週間で「いいね」合計が多い順にソート
+    # @books = Book.all
+    @books = Favorite.ordered_book_list
   end
 
   def create
@@ -54,5 +59,4 @@ class BooksController < ApplicationController
       redirect_to books_path
     end
   end
-
 end

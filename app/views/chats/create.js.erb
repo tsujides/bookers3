@@ -1,0 +1,4 @@
+$("#chat-message-list").replaceWith("<%= j(render 'show', chats: @chats) %>");
+$("#chat-message-form input[type=text").val('');
+$('#chat-message-list-holder').scrollTop($('#chat-message-list').height());
+$('#chat-message-error').html("<%= @error %>");

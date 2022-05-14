@@ -54,7 +54,9 @@
       </div>
     </div>
   </nav>
-  <div>
+<% if params[:controller] != 'chats' %>
+  <div id="header-search-form" class="container px-5 px-sm-0">
     <%= render 'searches/form' %>
   </div>
+<% end %>
 </header>

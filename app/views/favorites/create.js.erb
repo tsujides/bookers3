@@ -1,1 +1,1 @@
-$("#favorite-btn-<%= @book.id %>").html("<%= j(render 'favorites/favorite-btn', book: @book) %>");
+$("#book-list").replaceWith("<%= j(render 'books/index', books: @books) %>");
